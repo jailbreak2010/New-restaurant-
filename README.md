@@ -16,157 +16,249 @@
 }
 
 body{
-  background:#f5f5f5;
+  background:#f4f7f2;
+  color:#222;
 }
 
 /* HEADER */
 
 header{
-  background:#ff5722;
+  background:#1f7a4c;
+  padding:20px;
+  border-bottom-left-radius:30px;
+  border-bottom-right-radius:30px;
   color:white;
-  padding:18px;
-  text-align:center;
-  position:sticky;
-  top:0;
 }
 
 .logo-box{
   display:flex;
   align-items:center;
-  justify-content:center;
   gap:12px;
 }
 
 .logo{
-  width:60px;
-  height:60px;
+  width:55px;
+  height:55px;
   background:white;
-  color:#ff5722;
+  color:#1f7a4c;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:30px;
+  font-size:28px;
+  font-weight:bold;
 }
 
 header h1{
-  font-size:32px;
+  font-size:30px;
 }
 
 .tagline{
+  opacity:0.9;
   font-size:14px;
+  margin-top:3px;
 }
 
 /* MAIN */
 
 .container{
-  width:95%;
-  max-width:1200px;
-  margin:auto;
   padding:20px;
 }
 
-h2{
-  margin-bottom:15px;
-  color:#333;
+.top-text{
+  margin:20px 0;
 }
+
+.top-text h2{
+  font-size:34px;
+  line-height:1.2;
+}
+
+/* CATEGORY */
+
+.categories{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  margin-bottom:25px;
+}
+
+.category{
+  padding:12px 24px;
+  background:white;
+  border-radius:30px;
+  border:2px solid #ddd;
+  font-weight:bold;
+  white-space:nowrap;
+}
+
+.active-category{
+  background:#1f7a4c;
+  color:white;
+  border:none;
+}
+
+/* FOOD GRID */
 
 .food-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+  gap:25px;
 }
 
-/* FOOD CARDS */
+/* CARD */
 
 .card{
   background:white;
-  border-radius:14px;
+  border-radius:30px;
   overflow:hidden;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
 
-.card img{
+.food-image{
+  position:relative;
+}
+
+.food-image img{
   width:100%;
-  height:180px;
+  height:250px;
   object-fit:cover;
 }
 
+.rating{
+  position:absolute;
+  top:15px;
+  left:15px;
+  background:#222;
+  color:white;
+  padding:8px 14px;
+  border-radius:20px;
+  font-weight:bold;
+}
+
+.time{
+  position:absolute;
+  top:15px;
+  right:15px;
+  background:#222;
+  color:white;
+  padding:8px 14px;
+  border-radius:20px;
+  font-weight:bold;
+}
+
 .card-content{
-  padding:15px;
+  padding:20px;
 }
 
 .food-name{
-  font-size:20px;
-  margin-bottom:8px;
+  font-size:28px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.description{
+  color:#666;
+  line-height:1.5;
+  margin-bottom:18px;
+  font-size:17px;
+}
+
+.bottom-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
 .price{
-  color:#ff5722;
-  font-size:18px;
-  margin-bottom:12px;
-}
-
-/* BUTTONS */
-
-button{
-  border:none;
-  padding:10px;
-  border-radius:8px;
-  cursor:pointer;
-  width:100%;
+  font-size:28px;
   font-weight:bold;
 }
 
 .order-btn{
-  background:#ff5722;
+  width:65px;
+  height:65px;
+  border:none;
+  border-radius:50%;
+  background:#1f7a4c;
   color:white;
+  font-size:35px;
+  cursor:pointer;
 }
 
-.delete-btn{
-  background:red;
-  color:white;
-  margin-top:10px;
-}
-
-.admin-btn{
-  background:#222;
-  color:white;
-  margin-top:10px;
-}
+/* OWNER BUTTON */
 
 .open-admin-btn{
-  background:#222;
+  width:100%;
+  padding:15px;
+  margin-top:30px;
+  border:none;
+  border-radius:15px;
+  background:#111;
   color:white;
-  margin-top:20px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-/* PANELS */
+/* ADMIN PANEL */
 
 .admin-panel,
 .orders{
   background:white;
-  margin-top:40px;
+  margin-top:30px;
   padding:20px;
-  border-radius:14px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
-
-.admin-panel{
+  border-radius:25px;
   display:none;
 }
 
 .admin-panel input{
   width:100%;
-  padding:12px;
-  margin-bottom:12px;
+  padding:14px;
+  margin-bottom:14px;
+  border-radius:12px;
   border:1px solid #ccc;
-  border-radius:8px;
+}
+
+.admin-btn{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:#1f7a4c;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+.delete-btn{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  background:red;
+  color:white;
+  font-weight:bold;
+  margin-top:15px;
 }
 
 .order-item{
+  padding:14px 0;
   border-bottom:1px solid #ddd;
-  padding:12px 0;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .food-name{
+    font-size:22px;
+  }
+
+  .description{
+    font-size:15px;
+  }
+
 }
 
 </style>
@@ -184,9 +276,8 @@ button{
 
     <div>
       <h1>Flam Be</h1>
-
       <p class="tagline">
-        Hot & Fresh Food
+        Fresh & Healthy Food
       </p>
     </div>
 
@@ -196,7 +287,38 @@ button{
 
 <div class="container">
 
-  <h2>Menu</h2>
+  <div class="top-text">
+
+    <h2>
+      What would you like<br>
+      to eat today?
+    </h2>
+
+  </div>
+
+  <!-- CATEGORIES -->
+
+  <div class="categories">
+
+    <div class="category active-category">
+      All
+    </div>
+
+    <div class="category">
+      Burgers
+    </div>
+
+    <div class="category">
+      Pizza
+    </div>
+
+    <div class="category">
+      Chicken
+    </div>
+
+  </div>
+
+  <!-- FOODS -->
 
   <div class="food-grid" id="foodGrid"></div>
 
@@ -216,6 +338,8 @@ button{
 
     <h2>Owner Admin Panel</h2>
 
+    <br>
+
     <input
       type="text"
       id="foodName"
@@ -231,7 +355,7 @@ button{
     <input
       type="text"
       id="foodImage"
-      placeholder="Optional Custom Image URL"
+      placeholder="Optional Image URL"
     >
 
     <button
@@ -255,10 +379,11 @@ button{
   <div
     class="orders"
     id="ordersSection"
-    style="display:none;"
   >
 
     <h2>Customer Orders</h2>
+
+    <br>
 
     <div id="ordersList"></div>
 
@@ -270,23 +395,185 @@ button{
 
 let foods = JSON.parse(localStorage.getItem("foods")) || [
 
-  {
-    name:"Burger",
-    price:50,
-    image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd"
-  },
+{
+  name:"Classic Beef Burger",
+  price:12.99,
+  image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+  rating:"4.8",
+  time:"15 min",
+  description:"Juicy beef burger with cheese and sauce."
+},
 
-  {
-    name:"Pizza",
-    price:80,
-    image:"https://images.unsplash.com/photo-1513104890138-7c749659a591"
-  },
+{
+  name:"Margherita Pizza",
+  price:14.99,
+  image:"https://images.unsplash.com/photo-1513104890138-7c749659a591",
+  rating:"4.7",
+  time:"20 min",
+  description:"Fresh mozzarella pizza with basil."
+},
 
-  {
-    name:"Chicken",
-    price:70,
-    image:"https://images.unsplash.com/photo-1604503468506-a8da13d82791"
-  }
+{
+  name:"Chicken Bowl",
+  price:10.99,
+  image:"https://images.unsplash.com/photo-1547592180-85f173990554",
+  rating:"4.9",
+  time:"18 min",
+  description:"Healthy chicken bowl with vegetables."
+},
+
+{
+  name:"French Fries",
+  price:5.99,
+  image:"https://images.unsplash.com/photo-1576107232684-1279f390859f",
+  rating:"4.6",
+  time:"10 min",
+  description:"Crispy golden fries."
+},
+
+{
+  name:"Hot Dog",
+  price:7.99,
+  image:"https://images.unsplash.com/photo-1612392062798-8f5d5d6fef47",
+  rating:"4.5",
+  time:"12 min",
+  description:"Hot dog with sausage and ketchup."
+},
+
+{
+  name:"Chicken Pizza",
+  price:16.99,
+  image:"https://images.unsplash.com/photo-1594007654729-407eedc4be65",
+  rating:"4.8",
+  time:"22 min",
+  description:"Pizza loaded with chicken toppings."
+},
+
+{
+  name:"Double Burger",
+  price:15.99,
+  image:"https://images.unsplash.com/photo-1550547660-d9450f859349",
+  rating:"4.9",
+  time:"17 min",
+  description:"Double meat burger with cheese."
+},
+
+{
+  name:"Fried Chicken",
+  price:13.99,
+  image:"https://images.unsplash.com/photo-1562967916-eb82221dfb92",
+  rating:"4.7",
+  time:"16 min",
+  description:"Crunchy fried chicken pieces."
+},
+
+{
+  name:"Shawarma",
+  price:11.99,
+  image:"https://images.unsplash.com/photo-1529006557810-274b9b2fc783",
+  rating:"4.8",
+  time:"14 min",
+  description:"Delicious chicken shawarma wrap."
+},
+
+{
+  name:"Club Sandwich",
+  price:9.99,
+  image:"https://images.unsplash.com/photo-1528735602780-2552fd46c7af",
+  rating:"4.6",
+  time:"11 min",
+  description:"Triple layer sandwich with fries."
+},
+
+{
+  name:"Tacos",
+  price:8.99,
+  image:"https://images.unsplash.com/photo-1552332386-f8dd00dc2f85",
+  rating:"4.7",
+  time:"13 min",
+  description:"Mexican tacos with beef filling."
+},
+
+{
+  name:"Pasta",
+  price:12.99,
+  image:"https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9",
+  rating:"4.5",
+  time:"19 min",
+  description:"Creamy Italian pasta."
+},
+
+{
+  name:"Chicken Wings",
+  price:13.49,
+  image:"https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445",
+  rating:"4.8",
+  time:"15 min",
+  description:"Spicy grilled chicken wings."
+},
+
+{
+  name:"Salad Bowl",
+  price:9.49,
+  image:"https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
+  rating:"4.6",
+  time:"9 min",
+  description:"Healthy green salad bowl."
+},
+
+{
+  name:"Ice Cream",
+  price:6.99,
+  image:"https://images.unsplash.com/photo-1563805042-7684c019e1cb",
+  rating:"4.9",
+  time:"5 min",
+  description:"Sweet cold ice cream dessert."
+},
+
+{
+  name:"Donuts",
+  price:4.99,
+  image:"https://images.unsplash.com/photo-1551024601-bec78aea704b",
+  rating:"4.7",
+  time:"6 min",
+  description:"Chocolate glazed donuts."
+},
+
+{
+  name:"Coffee",
+  price:3.99,
+  image:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085",
+  rating:"4.8",
+  time:"4 min",
+  description:"Fresh hot coffee."
+},
+
+{
+  name:"Milkshake",
+  price:7.49,
+  image:"https://images.unsplash.com/photo-1577805947697-89e18249d767",
+  rating:"4.9",
+  time:"7 min",
+  description:"Creamy vanilla milkshake."
+},
+
+{
+  name:"Steak",
+  price:22.99,
+  image:"https://images.unsplash.com/photo-1544025162-d76694265947",
+  rating:"4.9",
+  time:"25 min",
+  description:"Premium grilled steak."
+},
+
+{
+  name:"Seafood Pizza",
+  price:18.99,
+  image:"https://images.unsplash.com/photo-1513104890138-7c749659a591",
+  rating:"4.7",
+  time:"24 min",
+  description:"Pizza topped with seafood."
+}
 
 ];
 
@@ -304,7 +591,7 @@ document.getElementById("foodGrid");
 const ordersList =
 document.getElementById("ordersList");
 
-/* OWNER LOGIN + LOGOUT */
+/* LOGIN */
 
 function openAdmin(){
 
@@ -322,8 +609,6 @@ function openAdmin(){
     .innerText = "Owner Login";
 
     displayFoods();
-
-    alert("Logged Out");
 
     return;
   }
@@ -346,8 +631,6 @@ function openAdmin(){
 
     displayFoods();
 
-    alert("Welcome Owner");
-
   }
 
   else{
@@ -363,24 +646,19 @@ function openAdmin(){
 function changePassword(){
 
   const oldPassword =
-  prompt("Enter Current Password");
+  prompt("Current Password");
 
   if(oldPassword !== ownerPassword){
 
-    alert("Wrong Current Password");
+    alert("Wrong Password");
 
     return;
   }
 
   const newPassword =
-  prompt("Enter New Password");
+  prompt("New Password");
 
-  if(!newPassword){
-
-    alert("Password not changed");
-
-    return;
-  }
+  if(!newPassword) return;
 
   ownerPassword = newPassword;
 
@@ -389,7 +667,7 @@ function changePassword(){
     newPassword
   );
 
-  alert("Password Changed Successfully");
+  alert("Password Changed");
 
 }
 
@@ -425,7 +703,19 @@ function displayFoods(){
 
       <div class="card">
 
-        <img src="${food.image}">
+        <div class="food-image">
+
+          <img src="${food.image}">
+
+          <div class="rating">
+            ⭐ ${food.rating}
+          </div>
+
+          <div class="time">
+            ⏱ ${food.time}
+          </div>
+
+        </div>
 
         <div class="card-content">
 
@@ -433,24 +723,32 @@ function displayFoods(){
             ${food.name}
           </div>
 
-          <div class="price">
-            K${food.price}
+          <div class="description">
+            ${food.description}
           </div>
 
-          ${
-            !isOwner
-            ?
-            `
-            <button
-              class="order-btn"
-              onclick="orderFood('${food.name}',${food.price})"
-            >
-              Order Now
-            </button>
-            `
-            :
-            ""
-          }
+          <div class="bottom-row">
+
+            <div class="price">
+              $${food.price}
+            </div>
+
+            ${
+              !isOwner
+              ?
+              `
+              <button
+                class="order-btn"
+                onclick="orderFood('${food.name}',${food.price})"
+              >
+                +
+              </button>
+              `
+              :
+              ""
+            }
+
+          </div>
 
           ${
             isOwner
@@ -496,41 +794,14 @@ function addFood(){
     return;
   }
 
-  /* AUTOMATIC FOOD IMAGES */
-
-  if(name.toLowerCase().includes("burger")){
-
-    image =
-    "https://images.unsplash.com/photo-1568901346375-23c9450c58cd";
-
-  }
-
-  else if(name.toLowerCase().includes("pizza")){
-
-    image =
-    "https://images.unsplash.com/photo-1513104890138-7c749659a591";
-
-  }
-
-  else if(name.toLowerCase().includes("chicken")){
-
-    image =
-    "https://images.unsplash.com/photo-1604503468506-a8da13d82791";
-
-  }
-
-  else if(name.toLowerCase().includes("fries")){
-
-    image =
-    "https://images.unsplash.com/photo-1576107232684-1279f390859f";
-
-  }
-
   foods.push({
 
     name:name,
     price:price,
-    image:image
+    image:image || "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
+    rating:"4.8",
+    time:"20 min",
+    description:"Fresh and delicious food from Flam Be."
 
   });
 
@@ -538,13 +809,9 @@ function addFood(){
 
   displayFoods();
 
-  document.getElementById("foodName").value = "";
-  document.getElementById("foodPrice").value = "";
-  document.getElementById("foodImage").value = "";
-
 }
 
-/* DELETE FOOD */
+/* DELETE */
 
 function deleteFood(index){
 
@@ -556,7 +823,7 @@ function deleteFood(index){
 
 }
 
-/* ORDER FOOD */
+/* ORDER */
 
 function orderFood(name,price){
 
@@ -577,7 +844,7 @@ function orderFood(name,price){
 
   displayOrders();
 
-  alert("Order placed successfully!");
+  alert("Order Placed");
 
 }
 
@@ -595,7 +862,7 @@ function displayOrders(){
     return;
   }
 
-  orders.forEach((order,index)=>{
+  orders.forEach((order)=>{
 
     ordersList.innerHTML += `
 
@@ -607,7 +874,9 @@ function displayOrders(){
 
         <strong>${order.food}</strong>
 
-        for K${order.price}
+        for
+
+        <strong>$${order.price}</strong>
 
       </div>
 
@@ -615,8 +884,6 @@ function displayOrders(){
   });
 
 }
-
-/* START */
 
 displayFoods();
 
