@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,6 +132,7 @@ button{
 .admin-btn{
   background:#222;
   color:white;
+  margin-top:10px;
 }
 
 .open-admin-btn{
@@ -200,11 +200,12 @@ button{
 
   <div class="food-grid" id="foodGrid"></div>
 
-  <!-- OWNER LOGIN BUTTON -->
+  <!-- OWNER LOGIN -->
 
   <button
     class="open-admin-btn"
     onclick="openAdmin()"
+    id="loginBtn"
   >
     Owner Login
   </button>
@@ -240,11 +241,22 @@ button{
       Add Food
     </button>
 
+    <button
+      class="admin-btn"
+      onclick="changePassword()"
+    >
+      Change Password
+    </button>
+
   </div>
 
   <!-- ORDERS -->
 
-  <div class="orders">
+  <div
+    class="orders"
+    id="ordersSection"
+    style="display:none;"
+  >
 
     <h2>Customer Orders</h2>
 
@@ -281,23 +293,58 @@ let foods = JSON.parse(localStorage.getItem("foods")) || [
 let orders =
 JSON.parse(localStorage.getItem("orders")) || [];
 
+let ownerPassword =
+localStorage.getItem("ownerPassword") || "flambe123";
+
+let isOwner = false;
+
 const foodGrid =
 document.getElementById("foodGrid");
 
 const ordersList =
 document.getElementById("ordersList");
 
-/* OWNER LOGIN */
+/* OWNER LOGIN + LOGOUT */
 
 function openAdmin(){
+
+  if(isOwner){
+
+    isOwner = false;
+
+    document.getElementById("adminPanel")
+    .style.display = "none";
+
+    document.getElementById("ordersSection")
+    .style.display = "none";
+
+    document.getElementById("loginBtn")
+    .innerText = "Owner Login";
+
+    displayFoods();
+
+    alert("Logged Out");
+
+    return;
+  }
 
   const password =
   prompt("Enter Owner Password");
 
-  if(password === "flambe123"){
+  if(password === ownerPassword){
+
+    isOwner = true;
 
     document.getElementById("adminPanel")
     .style.display = "block";
+
+    document.getElementById("ordersSection")
+    .style.display = "block";
+
+    document.getElementById("loginBtn")
+    .innerText = "Owner Logout";
+
+    displayFoods();
 
     alert("Welcome Owner");
 
@@ -308,6 +355,41 @@ function openAdmin(){
     alert("Wrong Password");
 
   }
+
+}
+
+/* CHANGE PASSWORD */
+
+function changePassword(){
+
+  const oldPassword =
+  prompt("Enter Current Password");
+
+  if(oldPassword !== ownerPassword){
+
+    alert("Wrong Current Password");
+
+    return;
+  }
+
+  const newPassword =
+  prompt("Enter New Password");
+
+  if(!newPassword){
+
+    alert("Password not changed");
+
+    return;
+  }
+
+  ownerPassword = newPassword;
+
+  localStorage.setItem(
+    "ownerPassword",
+    newPassword
+  );
+
+  alert("Password Changed Successfully");
 
 }
 
@@ -355,14 +437,35 @@ function displayFoods(){
             K${food.price}
           </div>
 
-          <button
-            class="order-btn"
-            onclick="orderFood('${food.name}',${food.price})"
-          >
+          ${
+            !isOwner
+            ?
+            `
+            <button
+              class="order-btn"
+              onclick="orderFood('${food.name}',${food.price})"
+            >
+              Order Now
+            </button>
+            `
+            :
+            ""
+          }
 
-            Order Now
-
-          </button>
+          ${
+            isOwner
+            ?
+            `
+            <button
+              class="delete-btn"
+              onclick="deleteFood(${index})"
+            >
+              Delete Food
+            </button>
+            `
+            :
+            ""
+          }
 
         </div>
 
@@ -438,6 +541,18 @@ function addFood(){
   document.getElementById("foodName").value = "";
   document.getElementById("foodPrice").value = "";
   document.getElementById("foodImage").value = "";
+
+}
+
+/* DELETE FOOD */
+
+function deleteFood(index){
+
+  foods.splice(index,1);
+
+  saveFoods();
+
+  displayFoods();
 
 }
 
